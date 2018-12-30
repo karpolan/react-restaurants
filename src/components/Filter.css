@@ -1,34 +1,33 @@
 .filter {
-	background-color: #aaa;
+  background-color: #aaa;
   color: #222;
   text-align: left;
 
-	padding: 1vh 1vw;
+  padding: 1vh 1vw;
 
-	display: flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
 .filter .search {
-	flex: 1;
-	text-align: left;
+  flex: 1;
+  text-align: left;
 }
 
 .filter .sort {
-	flex: 1;
-	text-align: right;
+  flex: 1;
+  text-align: right;
 }
 
 .filter .debug {
-	flex: 1;
-	text-align: center;
+  flex: 1;
+  text-align: center;
 }
 
 .filter .debug input,
 .filter .sort select,
 .filter .search input {
-	margin: auto 0.5vw;
+  margin: auto 0.5vw;
 }
-

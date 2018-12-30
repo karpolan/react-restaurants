@@ -1,11 +1,7 @@
-import Restaurants from './ListOfRestaurants';
-import Restaurant from './RestaurantDetails'
+import Restaurants from "./ListOfRestaurants";
+import Restaurant from "./RestaurantDetails";
 
-export {
-  Restaurants, 
-  Restaurant
-};
+export { Restaurants, Restaurant };
 
 const CurrentContainer = Restaurants;
 export default CurrentContainer;
-

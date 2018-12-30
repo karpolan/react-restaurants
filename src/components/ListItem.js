@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './ListItem.css';
-import ListObjectProps from './ListObjectProprties';
+import React from "react";
+import PropTypes from "prop-types";
+import "./ListItem.css";
+import ListObjectProps from "./ListObjectProprties";
 
 const ListItem = props => {
   const {
@@ -9,7 +9,7 @@ const ListItem = props => {
     name = "",
     status = "",
     sortingValues = {},
-    isFavorite = false,
+    isFavorite = false
   } = props.item;
 
   const renderDebug = () => {
@@ -23,13 +23,15 @@ const ListItem = props => {
           <ListObjectProps object={sortingValues} />
         </div>
       </div>
-    )
+    );
   };
 
   return (
     <div className="list-item">
       <div className="info">
-        <h3 className="name" onClick={() => props.onClick(props.item)}>{name}</h3>
+        <h3 className="name" onClick={() => props.onClick(props.item)}>
+          {name}
+        </h3>
         <p className="status">{status}</p>
         <label className="isFavorite">
           <input
