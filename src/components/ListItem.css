@@ -1,0 +1,65 @@
+.list-item {
+  background-color: #ddd;
+  color: #222;
+  text-align: left;
+
+	padding: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.info {
+	display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+	flex: 2;
+	text-align: left;
+	padding-left: 1vw;
+}
+
+.status {
+	flex: 1;
+	text-align: center;
+}
+
+.isFavorite {
+	flex: 1;
+	text-align: center;
+}	
+
+
+.debug {
+	background-color: #ccc;
+ 	
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.id {
+	flex: 1;
+	white-space: nowrap;
+	text-align: center;
+}
+
+
+.sortingValues {
+	flex: 11;
+}
+
+.sortingValues ul {
+	column-count: 3;
+	list-style-type: none;
+	margin-block-start: 0;
+	margin-block-end: 0;	
+}
+
+.sortingValues li {
+	white-space: nowrap;
+}
+

@@ -1,47 +1,46 @@
-import React from "react";
-import PropTypes from "prop-types";
-
-const jsxObjectPropsAsListItems = object => {
-  let result = null;
-  for (let property in object) {
-    console.log(property);
-    result += (
-      <li key={property}>
-        <span className="name">{property}</span>
-        <span className="value">{object[property]}</span>
-      </li>
-    );
-  }
-  return result;
-};
+import React from 'react';
+import PropTypes from 'prop-types';
+import './ListItem.css';
+import ListObjectProps from './ListObjectProprties';
 
 const ListItem = props => {
   const {
     id,
     name = "",
     status = "",
-    sortingValues = [],
+    sortingValues = {},
     isFavorite = false
   } = props.item;
 
+  const renderDebug = () => {
+    if (process.env.NODE_ENV === "production") return null;
+
+    return (
+      <div class="debug">
+        <p className="id">id: {id}</p>
+        <div className="sortingValues">
+          <ListObjectProps object={sortingValues} />
+        </div>
+      </div>
+    )
+  };
+
   return (
     <div className="list-item">
-      <p className="id">id: {id}</p>
-      <h3 className="name"  onClick={() => props.onClick(props.item)}>{name}</h3>
-      <p className="status">status: {status}</p>
-      <div className="sortingValues">
-        <h4>Sorting Values</h4>
-        <ul>{ jsxObjectPropsAsListItems(sortingValues)}</ul>
+      <div className="info">
+        <h3 className="name" onClick={() => props.onClick(props.item)}>{name}</h3>
+        <p className="status">{status}</p>
+        <label className="isFavorite">
+          favorite
+          <input
+            name="isFavorite"
+            type="checkbox"
+            checked={isFavorite}
+            onChange={() => props.onFavoriteChange(props.item)}
+          />
+        </label>
       </div>
-      <label>
-        Favorite
-        <input
-          name="isFavorite"
-          type="checkbox"
-          checked={isFavorite}
-          onChange={() => props.onFavoriteChange(props.item)}
-        />
-      </label>
+      {renderDebug()}
     </div>
   );
 };

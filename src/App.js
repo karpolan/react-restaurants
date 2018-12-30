@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import CurrentContainer from './containers';
-import {loadData, extendData} from "./storage";
+import {loadData, extendData} from './storage';
 
 const useMockData = true; // Todo: set false for production 
 
