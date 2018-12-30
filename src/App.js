@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import CurrentContainer from './containers';
+import {loadData, extendData} from "./storage";
+
+const useMockData = true; // Todo: set false for production 
 
 class App extends Component {
+  componentWillMount() {
+    loadData(useMockData);
+    extendData();  
+  }
+
   render() {
     return (
       <div className="App">
@@ -12,7 +20,7 @@ class App extends Component {
         </header>
         <CurrentContainer />
         <footer>
-          <p>Copyright &copy; <a rel="author" target="_blank" href="https://karpolan.com">KARPOLAN</a></p>
+          <p>Copyright &copy; <a rel="author noopener noreferrer" target="_blank" href="https://karpolan.com">KARPOLAN</a></p>
         </footer>
       </div>
     );
