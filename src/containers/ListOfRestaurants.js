@@ -18,6 +18,23 @@ export class ListOfRestaurants extends Component {
     this.list = [...getStorage().restaurants];
   }
 
+  getFilterdList() {
+    console.log("getFilterdList()");
+    let result = [];
+
+    // Text Search filter
+    const search = this.state.searchText.trim();
+    if (search != '') {
+      console.log("Search by: " + search);
+      for (let i = 0; i < this.list.length; i++) {
+        if (this.list[i].name.includes(search)) result.push(this.list[i]);
+      }
+    } else result = [...this.list];
+
+
+    return result;
+  }
+
   onDebugChange = event => {
     let flag = event.target.value;
     if (event.target.type === 'checkbox') flag = event.target.checked;
@@ -56,7 +73,7 @@ export class ListOfRestaurants extends Component {
         />
         <List
           isDebug={this.state.isDebug}
-          items={this.list}
+          items={this.getFilterdList()}
           onItemClick={this.onListItemClick}
           onItemFavoriteChange={this.onListItemFavoriteChange}
         />
