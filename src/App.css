@@ -3,8 +3,8 @@
 }
 
 header {
-  background-color: #ffffff;
-  color: #222222;
+  background-color: #fff;
+  color: #222;
   font-size: calc(1vh + 2vmin);
   text-align: left;
 
@@ -28,7 +28,7 @@ header h1 {
 }
 
 footer {
-  background-color: #aaa;
+  background-color: #fff;
   color: #222;
   font-size: 2vh;
   text-align: center;

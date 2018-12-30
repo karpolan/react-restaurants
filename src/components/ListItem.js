@@ -9,14 +9,15 @@ const ListItem = props => {
     name = "",
     status = "",
     sortingValues = {},
-    isFavorite = false
+    isFavorite = false,
   } = props.item;
 
   const renderDebug = () => {
     if (process.env.NODE_ENV === "production") return null;
+    if (!props.isDebug) return null;
 
     return (
-      <div class="debug">
+      <div className="debug">
         <p className="id">id: {id}</p>
         <div className="sortingValues">
           <ListObjectProps object={sortingValues} />
@@ -31,13 +32,12 @@ const ListItem = props => {
         <h3 className="name" onClick={() => props.onClick(props.item)}>{name}</h3>
         <p className="status">{status}</p>
         <label className="isFavorite">
-          favorite
           <input
-            name="isFavorite"
             type="checkbox"
             checked={isFavorite}
             onChange={() => props.onFavoriteChange(props.item)}
           />
+          favorite
         </label>
       </div>
       {renderDebug()}
@@ -48,7 +48,8 @@ const ListItem = props => {
 ListItem.propTypes = {
   item: PropTypes.object.isRequired,
   onClick: PropTypes.func,
-  onFavoriteChange: PropTypes.func
+  onFavoriteChange: PropTypes.func,
+  isDebug: PropTypes.bool
 };
 
 export default ListItem;

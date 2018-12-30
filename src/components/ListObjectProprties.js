@@ -8,7 +8,7 @@ const listObjectProprties = props => {
     let result = [];
     for (let property in object) {
       result.push(
-        <li key={property} className="object-list-item">
+        <li key={property}>
           {property} = {object[property]}
         </li>
       );

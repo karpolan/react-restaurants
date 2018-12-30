@@ -1,7 +1,4 @@
 import List from './List';
-import ListItem from './ListItem'
+import Filter from './Filter';
 
-export {
-  List, 
-  ListItem
-};
+export { List, Filter };
