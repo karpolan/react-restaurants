@@ -98,41 +98,50 @@ function sortRestaurantsDefault(list) {
     else if (item.status === "closed") bottom.push(item);
     else middle.push(item);
   }
-
   return [...top, ...middle, ...bottom];
 }
 
 //------------------------------------------------------------------------------
-// Sort function to move "favorite" item to the top
+// Returns true if there is at least one item in list with "isFvorite" flag set.
+function isFavoriteExist(list) {
+  for (let item of list) {
+    if (item.isFavorite) return true;
+  } 
+  return false;
+}
+
+//------------------------------------------------------------------------------
+// Sort function to move "favorite" item to the top.
 function sortByFavorites(a, b) {
-  if (a.isFavorite && !b.isFavorite) return -1;
-  if (!a.isFavorite && b.isFavorite) return 1;
+  if (a.isFavorite === false && b.isFavorite === true) return 1;
+  if (a.isFavorite === true && b.isFavorite === false) return -1;
   return 0;
 }
 
 //------------------------------------------------------------------------------
 // Returns array of restaurants depending on Search Text, Sorting Kind and Favorite state.
 // Favorites on the top and also sorted by sortKind value.
-export function getFilterdRestaurantsList(searchText = "", sortKind = 0) {
-  const storage = getStorage();
-  let list = storage.restaurants;
+export function getFilterdRestaurantsList(list, searchText = "", sortKind = 0) {
   let result = [];
 
-  // Text Search filter (ignore case)
+  // Text Search filter (ignore case) 
   const search = searchText.trim().toLowerCase();
   if (search !== "") {
     for (let i = 0; i < list.length; i++) {
       if (list[i].name.toLowerCase().includes(search)) result.push(list[i]);
     }
-  } else result = [...list];
+  } else {
+     result = [...list];
+  }
 
-  // We are sorting rest elemets of array depending on the current sortKind or by default sorting.
+  // We are sorting elemets of array depending on the current sortKind or by default sorting.
   if (sortKind < 1 || sortKind >= compareSortRestaurants.length)
     result = sortRestaurantsDefault(result);
-  else result.sort(compareSortRestaurants.get(sortKind));
+  else 
+    result.sort(compareSortRestaurants.get(sortKind));
 
   // Run thru array again moving every found favorite to the top, that makes multiply favorites be sored in the same way.
-  result.sort(sortByFavorites);
+  if (isFavoriteExist(result)) result.sort(sortByFavorites);
 
   return result;
 }

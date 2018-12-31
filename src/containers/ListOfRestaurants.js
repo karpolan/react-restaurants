@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { List, Filter } from "./../components";
-import { getFilterdRestaurantsList } from "./../storage";
+import { getStorage, getFilterdRestaurantsList } from "./../storage";
 
 export class ListOfRestaurants extends Component {
   constructor(props) {
@@ -11,8 +11,13 @@ export class ListOfRestaurants extends Component {
     };
   }
 
+  getList() {
+    return getStorage().restaurants;
+  }
+
   getFilterdList() {
     return getFilterdRestaurantsList(
+      this.getList(),
       this.state.searchText,
       this.state.sortKind
     );
