@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { List, Filter } from "./../components";
-import { getStorage } from "./../storage";
-import { compareSortRestaurants } from "./../storage/reataurants"
+import { getStorage } from "../storage/storage";
+import { compareSortRestaurants } from "./../storage";
 
 export class ListOfRestaurants extends Component {
   list = null;

@@ -1,0 +1,9 @@
+.list {
+  background-color: #ddd;
+  color: #222;
+}
+
+.list .empty {
+  text-align: center;
+  padding: 2vh 1vw;
+}

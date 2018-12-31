@@ -1,10 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ListObjectProps from "./ObjectProprties";
+import { propertySortRestaurants } from "../../../storage";
 import "./ListItem.css";
-import ListObjectProps from "./ListObjectProprties";
-import { propertySortRestaurants } from "./../storage/reataurants"
 
-const ListItem = props => {
+// Renders single "restaurnats list" item for given "props.item".
+// When "props.isDebug" renders additional view with "id", "sortingValues", etc.
+// Event "props.onFavoriteChange" binded to "favorite" checbox.
+// Event "props.onClick" binded to "name" header.
+// All CSS styles are set in "./ListItem.css" file.
+const listItem = props => {
   const {
     id,
     name = "",
@@ -14,14 +19,16 @@ const ListItem = props => {
   } = props.item;
 
   const renderDebug = () => {
-//    if (process.env.NODE_ENV === "production") return null;
     if (!props.isDebug) return null;
 
     return (
       <div className="debug">
         <p className="id">id: {id}</p>
         <div className="sortingValues">
-          <ListObjectProps object={sortingValues} highlights={[propertySortRestaurants.get(props.sortKind)]} />
+          <ListObjectProps
+            object={sortingValues}
+            highlights={[propertySortRestaurants.get(props.sortKind)]}
+          />
         </div>
       </div>
     );
@@ -42,19 +49,21 @@ const ListItem = props => {
           />
           favorite
         </label>
-        <p className="sort">{sortingValues[propertySortRestaurants.get(props.sortKind)]}</p>
+        <p className="sort">
+          {sortingValues[propertySortRestaurants.get(props.sortKind)]}
+        </p>
       </div>
       {renderDebug()}
     </div>
   );
 };
 
-ListItem.propTypes = {
+listItem.propTypes = {
   item: PropTypes.object.isRequired,
+  sortKind: PropTypes.number,
   onClick: PropTypes.func,
   onFavoriteChange: PropTypes.func,
-  isDebug: PropTypes.bool,
-  sortKind: PropTypes.number
+  isDebug: PropTypes.bool
 };
 
-export default ListItem;
+export default listItem;

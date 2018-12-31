@@ -1,66 +1,63 @@
 .list-item {
   text-align: left;
-	padding: 0;
-	border-bottom: 1px solid #ccc;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
 }
 
 .list-item .info {
-	display: flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
 .list-item .info .name {
-	flex: 2;
-	text-align: left;
-	padding-left: 1vw;
+  flex: 2;
+  text-align: left;
+  padding-left: 1vw;
 }
 
 .list-item .info .sort,
 .list-item .info .status {
-	flex: 1;
-	text-align: center;
+  flex: 1;
+  text-align: center;
 }
 
 .list-item .info .favorite {
-	flex: 1;
-	text-align: center;
-}	
-
+  flex: 1;
+  text-align: center;
+}
 
 .list-item .debug {
-	color: #aaa;
- 	display: flex;
+  color: #aaa;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 }
 
-
 .list-item .debug .id {
-	flex: 1;
-	white-space: nowrap;
-	text-align: center;
+  flex: 1;
+  white-space: nowrap;
+  text-align: center;
 }
 
-
 .list-item .debug .sortingValues {
-	flex: 11;
+  flex: 11;
 }
 
 .list-item .debug .sortingValues ul {
-	column-count: 3;
-	list-style-type: none;
-	margin-block-start: 0;
-	margin-block-end: 0;	
+  column-count: 3;
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .list-item .debug .sortingValues li {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 .list-item .debug .highlight {
-	color: #222;
-	font-weight: bold;
+  color: #222;
+  font-weight: bold;
 }

@@ -30,4 +30,5 @@
 .filter .sort select,
 .filter .search input {
   margin: auto 0.5vw;
+  width: 25vw;
 }

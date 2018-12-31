@@ -1,3 +1,6 @@
+import { getStorage, setStorage } from './storage'
+
+//------------------------------------------------------------------------------
 // Set of titles for sortKind values
 export const titleSortRestaurants = new Map();
 titleSortRestaurants.set(0, '[none]');
@@ -11,6 +14,7 @@ titleSortRestaurants.set(7, 'delivery costs');
 titleSortRestaurants.set(8, 'minimum costs');
 titleSortRestaurants.set(9, 'top restaurant');
 
+//------------------------------------------------------------------------------
 // Set of property names for "restaurants.sortingValues" object
 export const propertySortRestaurants = new Map();
 propertySortRestaurants.set(0, '');
@@ -24,6 +28,7 @@ propertySortRestaurants.set(7, 'deliveryCosts');
 propertySortRestaurants.set(8, 'minCost');
 propertySortRestaurants.set(9, 'topRestaurants');
 
+//------------------------------------------------------------------------------
 // Set of compare functions to sort "restaurants" array depending on sortKind value
 export const compareSortRestaurants = new Map();
 compareSortRestaurants.set(0, (a, b) => 0);
@@ -54,3 +59,25 @@ compareSortRestaurants.set(8, (a, b) => {
 compareSortRestaurants.set(9, (a, b) => {
   return b.sortingValues.topRestaurants - a.sortingValues.topRestaurants;
 });
+
+//------------------------------------------------------------------------------
+// Extends loaded from API/Backend data with calcualted values and local identifiers
+export function extendRestaurantsData() {
+  const storage = getStorage();
+
+  // Set ID, isFavorite and topRestaurant for 'restaurants'
+  if (Array.isArray(storage.restaurants)) {
+    for (let i = 0; i < storage.restaurants.length; i++) {
+      let r = storage.restaurants[i];
+      if (r) {
+        if (!r.id) r.id = i;
+        if (!r.isFavorite) r.isFavorite = false;
+        r.sortingValues.topRestaurants =
+          r.sortingValues.distance * r.sortingValues.popularity +
+          r.sortingValues.ratingAverage;
+      }
+    }
+  }
+
+  setStorage({ ...storage, isDataExtended: true });
+}

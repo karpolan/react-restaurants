@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import "./App.css";
 import Logo from "./icon-restaurant.png"
 import CurrentContainer from "./containers";
-import { loadData, extendData } from "./storage";
+import { loadData, extendRestaurantsData } from "./storage";
 
 const useMockData = true; // Todo: set false for production
 
 class App extends Component {
+
   componentWillMount() {
-    loadData(useMockData);
-    extendData();
+    loadData(useMockData);   // Load Mock data
+    extendRestaurantsData(); // Extend data for Restaurants
   }
 
   render() {
