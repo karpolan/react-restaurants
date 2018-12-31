@@ -49,7 +49,6 @@ function extendData() {
         r.sortingValues.topRestaurants =
           r.sortingValues.distance * r.sortingValues.popularity +
           r.sortingValues.ratingAverage;
-        //				console.log(r);
       }
     }
   }

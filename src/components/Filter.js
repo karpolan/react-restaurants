@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Filter.css";
-import { sortKindRestaurants } from "./../storage/reataurants"
+import { titleSortRestaurants } from "./../storage/reataurants"
 
 const filter = props => {
   const { searchText, sortKind, onSearchChange, onSortChange } = props;
@@ -31,16 +31,16 @@ const filter = props => {
       <label className="sort">
         Sort
         <select value={sortKind} onChange={onSortChange}>
-          <option value="0">{sortKindRestaurants.get(0)}</option>
-          <option value="1">{sortKindRestaurants.get(1)}</option>
-          <option value="2">{sortKindRestaurants.get(2)}</option>
-          <option value="3">{sortKindRestaurants.get(3)}</option>
-          <option value="4">{sortKindRestaurants.get(4)}</option>
-          <option value="5">{sortKindRestaurants.get(5)}</option>
-          <option value="6">{sortKindRestaurants.get(6)}</option>
-          <option value="7">{sortKindRestaurants.get(7)}</option>
-          <option value="8">{sortKindRestaurants.get(8)}</option>
-          <option value="9">{sortKindRestaurants.get(9)}</option>
+          <option value="0">{titleSortRestaurants.get(0)}</option>
+          <option value="1">{titleSortRestaurants.get(1)}</option>
+          <option value="2">{titleSortRestaurants.get(2)}</option>
+          <option value="3">{titleSortRestaurants.get(3)}</option>
+          <option value="4">{titleSortRestaurants.get(4)}</option>
+          <option value="5">{titleSortRestaurants.get(5)}</option>
+          <option value="6">{titleSortRestaurants.get(6)}</option>
+          <option value="7">{titleSortRestaurants.get(7)}</option>
+          <option value="8">{titleSortRestaurants.get(8)}</option>
+          <option value="9">{titleSortRestaurants.get(9)}</option>
         </select>
       </label>
     </div>

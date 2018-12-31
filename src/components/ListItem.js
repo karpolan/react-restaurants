@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./ListItem.css";
 import ListObjectProps from "./ListObjectProprties";
+import { propertySortRestaurants } from "./../storage/reataurants"
 
 const ListItem = props => {
   const {
@@ -20,7 +21,7 @@ const ListItem = props => {
       <div className="debug">
         <p className="id">id: {id}</p>
         <div className="sortingValues">
-          <ListObjectProps object={sortingValues} />
+          <ListObjectProps object={sortingValues} highlights={[propertySortRestaurants.get(props.sortKind)]} />
         </div>
       </div>
     );
@@ -51,7 +52,8 @@ ListItem.propTypes = {
   item: PropTypes.object.isRequired,
   onClick: PropTypes.func,
   onFavoriteChange: PropTypes.func,
-  isDebug: PropTypes.bool
+  isDebug: PropTypes.bool,
+  sortKind: PropTypes.number
 };
 
 export default ListItem;

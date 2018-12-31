@@ -5,7 +5,7 @@ import ListItem from "./ListItem";
 
 
 const list = props => {
-  const { items, onItemClick, onItemFavoriteChange, isDebug } = props;
+  const { items, onItemClick, onItemFavoriteChange, isDebug, sortKind } = props;
 
   const renderList = () => {
     return items.map((item, i) => (
@@ -15,6 +15,7 @@ const list = props => {
         onClick={onItemClick}
         onFavoriteChange={onItemFavoriteChange}
         isDebug={isDebug}
+        sortKind={sortKind}
       />
     ));
   };
@@ -34,7 +35,8 @@ list.propTypes = {
   items: PropTypes.array.isRequired,
   onItemClick: PropTypes.func,
   onItemFavoriteChange: PropTypes.func,
-  isDebug: PropTypes.bool
+  isDebug: PropTypes.bool,
+  sortKind: PropTypes.number
 };
 
 export default list;

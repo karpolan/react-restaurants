@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const listObjectProprties = props => {
-  const { object } = props;
+  const { object, highlights = []} = props;
 
   const renderObjectProperties = object => {
     let result = [];
     for (let property in object) {
       result.push(
-        <li key={property}>
+        <li key={property} className={highlights.includes(property) ? "highlight " + property : property} >
           {property} = {object[property]}
         </li>
       );
@@ -20,7 +20,8 @@ const listObjectProprties = props => {
 };
 
 listObjectProprties.propTypes = {
-  object: PropTypes.object.isRequired
+  object: PropTypes.object.isRequired,
+  highlights: PropTypes.array // Array of property names to add CSS .higlight classs into <li> element
 };
 
 export default listObjectProprties;

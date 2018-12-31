@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { List, Filter } from "./../components";
 import { getStorage } from "./../storage";
-import { compareKindRestaurants } from "./../storage/reataurants"
+import { compareSortRestaurants } from "./../storage/reataurants"
 
 export class ListOfRestaurants extends Component {
   list = null;
@@ -20,23 +20,22 @@ export class ListOfRestaurants extends Component {
   }
 
   getFilterdList() {
-    console.log("getFilterdList()");
     let result = [];
 
-    // Text Search filter
-    const search = this.state.searchText.trim();
+    // Text Search filter (ignore case)
+    const search = this.state.searchText.trim().toLowerCase();
     if (search !== '') {
       for (let i = 0; i < this.list.length; i++) {
-        if (this.list[i].name.includes(search)) result.push(this.list[i]);
+        if (this.list[i].name.toLowerCase().includes(search)) result.push(this.list[i]);
       }
     } else result = [...this.list];
 
     // We are sorting rest elemets of array depending on the current sortKind. 
     // Then run again from bottom to top, moving every found favorite to the top, 
-    // that makes multiply favorites be sored in the same way
+    // that makes multiply favorites be sored in the same way.
     let sorted = [...result];
 
-    sorted.sort(compareKindRestaurants.get(this.state.sortKind))
+    sorted.sort(compareSortRestaurants.get(this.state.sortKind))
 
 /*
     for (let i = sorted.length - 1; i >= 0; i--) {
@@ -87,6 +86,7 @@ export class ListOfRestaurants extends Component {
           items={this.getFilterdList()}
           onItemClick={this.onListItemClick}
           onItemFavoriteChange={this.onListItemFavoriteChange}
+          sortKind={this.state.sortKind}
         />
         <Filter
           isDebug={this.state.isDebug}
