@@ -15,7 +15,7 @@ titleSortRestaurants.set(8, "minimum costs");
 titleSortRestaurants.set(9, "top restaurant");
 
 //------------------------------------------------------------------------------
-// Set of property names for "restaurants.sortingValues" object
+// Set of property names for "restaurants.sortingValues" object by sortKind values
 export const propertySortRestaurants = new Map();
 propertySortRestaurants.set(0, "");
 propertySortRestaurants.set(1, "bestMatch");
@@ -129,8 +129,7 @@ export function getFilterdRestaurantsList(searchText = "", sortKind = 0) {
   // We are sorting rest elemets of array depending on the current sortKind or by default sorting.
   if (sortKind < 1 || sortKind >= compareSortRestaurants.length)
     result = sortRestaurantsDefault(result);
-  else 
-    result.sort(compareSortRestaurants.get(sortKind));
+  else result.sort(compareSortRestaurants.get(sortKind));
 
   // Run thru array again moving every found favorite to the top, that makes multiply favorites be sored in the same way.
   result.sort(sortByFavorites);

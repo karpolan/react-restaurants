@@ -19,7 +19,8 @@ export class ListOfRestaurants extends Component {
   }
 
   onListItemClick = item => {
-    alert(`Item {item.id} clicked`);
+    // Todo: Route to Restaurant Details  
+    alert(`Item "${item.name}" id: ${item.id} clicked`);
   };
 
   onListItemFavoriteChange = item => {

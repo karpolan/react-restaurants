@@ -22,7 +22,6 @@ class App extends Component {
     this.setState({isDebug: flag});
   };
 
-
   render() {
     return (
       <div className="App">
