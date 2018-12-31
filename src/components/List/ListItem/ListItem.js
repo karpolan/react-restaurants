@@ -23,7 +23,7 @@ const listItem = props => {
 
     return (
       <div className="debug">
-        <p className="id">id: {id}</p>
+        <p className={props.sortKind < 1 ? "id highlight" : "id" }>id: {id}</p>
         <div className="sortingValues">
           <ListObjectProps
             object={sortingValues}

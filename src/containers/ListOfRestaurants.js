@@ -9,7 +9,6 @@ export class ListOfRestaurants extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      isDebug: false,
       searchText: '',
       sortKind: 0 
     };
@@ -45,12 +44,6 @@ export class ListOfRestaurants extends Component {
     return sorted;
   }
 
-  onDebugChange = event => {
-    let flag = event.target.value;
-    if (event.target.type === 'checkbox') flag = event.target.checked;
-    this.setState({isDebug: flag});
-  };
-
   onListItemClick = item => {
     alert(`Item {item.id} clicked`);
   };
@@ -74,27 +67,25 @@ export class ListOfRestaurants extends Component {
     return (
       <div className="ListOfRestaurants">
         <Filter
-          isDebug={this.state.isDebug}
+          isDebug={this.props.isDebug}
           searchText={this.state.searchText}
           sortKind={this.state.sortKind}
           onSearchChange={this.onSearchChange}
           onSortChange={this.onSortChange}
-          onDebugChange={this.onDebugChange}
         />
         <List
-          isDebug={this.state.isDebug}
+          isDebug={this.props.isDebug}
           items={this.getFilterdList()}
           onItemClick={this.onListItemClick}
           onItemFavoriteChange={this.onListItemFavoriteChange}
           sortKind={this.state.sortKind}
         />
         <Filter
-          isDebug={this.state.isDebug}
+          isDebug={this.props.isDebug}
           searchText={this.state.searchText}
           sortKind={this.state.sortKind}
           onSearchChange={this.onSearchChange}
           onSortChange={this.onSortChange}
-          onDebugChange={this.onDebugChange}
         />
       </div>
     );
