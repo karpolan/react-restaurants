@@ -14,7 +14,7 @@ const ListItem = props => {
   } = props.item;
 
   const renderDebug = () => {
-    if (process.env.NODE_ENV === "production") return null;
+//    if (process.env.NODE_ENV === "production") return null;
     if (!props.isDebug) return null;
 
     return (
@@ -34,7 +34,7 @@ const ListItem = props => {
           {name}
         </h3>
         <p className="status">{status}</p>
-        <label className="isFavorite">
+        <label className="favorite">
           <input
             type="checkbox"
             checked={isFavorite}
@@ -42,6 +42,7 @@ const ListItem = props => {
           />
           favorite
         </label>
+        <p className="sort">{sortingValues[propertySortRestaurants.get(props.sortKind)]}</p>
       </div>
       {renderDebug()}
     </div>

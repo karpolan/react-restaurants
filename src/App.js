@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import Logo from "./icon-restaurant.png"
 import CurrentContainer from "./containers";
 import { loadData, extendData } from "./storage";
 
@@ -17,7 +18,7 @@ class App extends Component {
         <header>
           <img
             className="logotype rotate"
-            src={"/icon-restaurant.png"}
+            src={Logo}
             alt="Logotype"
           />
           <h1>Restaurants</h1>

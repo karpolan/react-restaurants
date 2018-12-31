@@ -17,12 +17,13 @@
 	padding-left: 1vw;
 }
 
+.list-item .info .sort,
 .list-item .info .status {
 	flex: 1;
 	text-align: center;
 }
 
-.list-item .info .isFavorite {
+.list-item .info .favorite {
 	flex: 1;
 	text-align: center;
 }	

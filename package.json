@@ -1,6 +1,6 @@
 {
   "name": "react-restaurants",
-  "version": "0.5.5",
+  "version": "0.5.7",
   "description": "List of restaurants with sorting and searching using React JS",
   "keywords": ["react", "list", "demo", "sample", "restaurant"],
   "author": "Anton Karpenko <i@karpolan.com> (https://karpolan.com)",

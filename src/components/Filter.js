@@ -7,7 +7,7 @@ const filter = props => {
   const { searchText, sortKind, onSearchChange, onSortChange } = props;
 
   const renderDebug = () => {
-    if (process.env.NODE_ENV === "production") return null;
+//    if (process.env.NODE_ENV === "production") return null;
 
     const { isDebug, onDebugChange } = props;
     return (
