@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { List, Filter } from "./../components";
-import { getStorage, setStorage } from "./../storage";
+import { getStorage } from "./../storage";
+import { compareKindRestaurants } from "./../storage/reataurants"
 
 export class ListOfRestaurants extends Component {
   list = null;
@@ -24,15 +25,25 @@ export class ListOfRestaurants extends Component {
 
     // Text Search filter
     const search = this.state.searchText.trim();
-    if (search != '') {
-      console.log("Search by: " + search);
+    if (search !== '') {
       for (let i = 0; i < this.list.length; i++) {
         if (this.list[i].name.includes(search)) result.push(this.list[i]);
       }
     } else result = [...this.list];
 
+    // We are sorting rest elemets of array depending on the current sortKind. 
+    // Then run again from bottom to top, moving every found favorite to the top, 
+    // that makes multiply favorites be sored in the same way
+    let sorted = [...result];
 
-    return result;
+    sorted.sort(compareKindRestaurants.get(this.state.sortKind))
+
+/*
+    for (let i = sorted.length - 1; i >= 0; i--) {
+      if (sorted[i].isFavorite)
+    }
+*/
+    return sorted;
   }
 
   onDebugChange = event => {
