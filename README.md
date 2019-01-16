@@ -1,6 +1,8 @@
 # Restaurants
 This is a "homework" aka "test task" for position of Full Stack Web developer.
 
+[On-line Demo](https://karpolan.com/demos/react-restaurants/)
+
 ## Task
 The goal of this test is to implement a sample project in Php/Javascript, where you
 visualize a restaurant list. You are able to sort the restaurant list based on its current
