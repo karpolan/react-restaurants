@@ -45,22 +45,22 @@ it('filters "storage.restaurants" array depending on user input', () => {
 	expect(list[1].id).toEqual(1);
 	expect(list[2].id).toEqual(17);
 
-	// 18 12 13 15 17
+	// 0 7 5 3 9 - distance, empty search
 	list = getFilterdRestaurantsList(defaultList, '', 4);
-	expect(list[0].id).toEqual(18);
-	expect(list[1].id).toEqual(12);
-	expect(list[2].id).toEqual(13);
-	expect(list[3].id).toEqual(15);
-	expect(list[4].id).toEqual(17);
+	expect(list[0].id).toEqual(0);
+	expect(list[1].id).toEqual(7);
+	expect(list[2].id).toEqual(5);
+	expect(list[3].id).toEqual(3);
+	expect(list[4].id).toEqual(9);
 
 	// set isFavrite for id=15 and id=4
 	list = [...defaultList];
-	list[4].isFavorite = true;
 	list[15].isFavorite = true; 
-	// 15 4 
+	list[4].isFavorite = true;
+	// 4 15
 	list = getFilterdRestaurantsList(list, '', 4);
-	expect(list[0].id).toEqual(15);
-	expect(list[1].id).toEqual(4);
+	expect(list[0].id).toEqual(4);
+	expect(list[1].id).toEqual(15);
 
 });
 

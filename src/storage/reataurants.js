@@ -3,30 +3,32 @@ import { getStorage, setStorage } from "./storage";
 //------------------------------------------------------------------------------
 // Set of titles for sortKind values
 export const titleSortRestaurants = new Map();
-titleSortRestaurants.set(0, "[none]");
-titleSortRestaurants.set(1, "best match");
-titleSortRestaurants.set(2, "newest");
-titleSortRestaurants.set(3, "rating average");
-titleSortRestaurants.set(4, "distance");
-titleSortRestaurants.set(5, "popularity");
-titleSortRestaurants.set(6, "average product price");
-titleSortRestaurants.set(7, "delivery costs");
-titleSortRestaurants.set(8, "minimum costs");
-titleSortRestaurants.set(9, "top restaurant");
+titleSortRestaurants.set(0,  "[none]");
+titleSortRestaurants.set(1,  "best match");
+titleSortRestaurants.set(2,  "newest");
+titleSortRestaurants.set(3,  "rating average");
+titleSortRestaurants.set(4,  "distance");
+titleSortRestaurants.set(5,  "popularity");
+titleSortRestaurants.set(6,  "average product price");
+titleSortRestaurants.set(7,  "delivery costs");
+titleSortRestaurants.set(8,  "minimum costs");
+titleSortRestaurants.set(9,  "top restaurant");
+titleSortRestaurants.set(10, "best restaurant");
 
 //------------------------------------------------------------------------------
 // Set of property names for "restaurants.sortingValues" object by sortKind values
 export const propertySortRestaurants = new Map();
-propertySortRestaurants.set(0, "");
-propertySortRestaurants.set(1, "bestMatch");
-propertySortRestaurants.set(2, "newest");
-propertySortRestaurants.set(3, "ratingAverage");
-propertySortRestaurants.set(4, "distance");
-propertySortRestaurants.set(5, "popularity");
-propertySortRestaurants.set(6, "averageProductPrice");
-propertySortRestaurants.set(7, "deliveryCosts");
-propertySortRestaurants.set(8, "minCost");
-propertySortRestaurants.set(9, "topRestaurants");
+propertySortRestaurants.set(0,  "");
+propertySortRestaurants.set(1,  "bestMatch");
+propertySortRestaurants.set(2,  "newest");
+propertySortRestaurants.set(3,  "ratingAverage");
+propertySortRestaurants.set(4,  "distance");
+propertySortRestaurants.set(5,  "popularity");
+propertySortRestaurants.set(6,  "averageProductPrice");
+propertySortRestaurants.set(7,  "deliveryCosts");
+propertySortRestaurants.set(8,  "minCost");
+propertySortRestaurants.set(9,  "topRestaurants");
+propertySortRestaurants.set(10, "bestRestaurants");
 
 //------------------------------------------------------------------------------
 // Set of compare functions to sort "restaurants" array depending on sortKind value
@@ -61,8 +63,10 @@ compareSortRestaurants.set(8, (a, b) => {
   return a.sortingValues.minCost - b.sortingValues.minCost;
 });
 compareSortRestaurants.set(9, (a, b) => {
-  // asc for topRestaurants
-  return a.sortingValues.topRestaurants - b.sortingValues.topRestaurants;
+  return b.sortingValues.topRestaurants - a.sortingValues.topRestaurants;
+});
+compareSortRestaurants.set(10, (a, b) => {
+  return b.sortingValues.bestRestaurants - a.sortingValues.bestRestaurants;
 });
 
 //------------------------------------------------------------------------------
@@ -77,9 +81,20 @@ export function extendRestaurantsData() {
       if (r) {
         if (!r.id) r.id = i;
         if (!r.isFavorite) r.isFavorite = false;
+/* 
+Customers are more willing to order at restaurants near them. As we also like to promote
+restaurants with high scores, we need to calculate a new sort method called top
+restaurant . Use the following formula to calculate top restaurants:
+topRestaurants = ((distance * popularity) + rating average) .
+
+Actually the formula should be something like: 
+bestRestaurants = (rating average + popularity) / distance
+*/  
         r.sortingValues.topRestaurants =
-          r.sortingValues.distance * r.sortingValues.popularity +
-          r.sortingValues.ratingAverage;
+          (r.sortingValues.distance * r.sortingValues.popularity) + r.sortingValues.ratingAverage;
+
+        r.sortingValues.bestRestaurants = 1000 *
+          (r.sortingValues.ratingAverage + r.sortingValues.popularity) / r.sortingValues.distance;
       }
     }
   }
