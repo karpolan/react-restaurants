@@ -26,11 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <img
-            className="logotype rotate"
-            src={Logo}
-            alt="Logotype"
-          />
+          <img className="logotype rotate" src={Logo} alt="Logotype"/>
           <h1>Restaurants</h1>
 
           <div className="debug">
@@ -41,17 +37,13 @@ class App extends Component {
           </div>
           
         </header>
+
         <CurrentContainer isDebug={this.state.isDebug} />
+
         <footer>
           <p>
-            Copyright &copy;{" "}
-            <a
-              rel="author noopener noreferrer"
-              target="_blank"
-              href="https://karpolan.com"
-            >
-              KARPOLAN
-            </a>
+           <a  rel="noopener noreferrer" target="_blank"href="https://github.com/karpolan/react-restaurants">Source code on GitHub</a>{". "}
+            Copyright &copy;{" "}<a rel="author noopener noreferrer" target="_blank" href="https://karpolan.com">KARPOLAN</a>
           </p>
         </footer>
       </div>
