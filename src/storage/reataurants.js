@@ -42,21 +42,26 @@ compareSortRestaurants.set(3, (a, b) => {
   return b.sortingValues.ratingAverage - a.sortingValues.ratingAverage;
 });
 compareSortRestaurants.set(4, (a, b) => {
-  return b.sortingValues.distance - a.sortingValues.distance;
+  // asc for distance
+  return a.sortingValues.distance - b.sortingValues.distance;
 });
 compareSortRestaurants.set(5, (a, b) => {
   return b.sortingValues.popularity - a.sortingValues.popularity;
 });
 compareSortRestaurants.set(6, (a, b) => {
-  return b.sortingValues.averageProductPrice - a.sortingValues.averageProductPrice;
+  // asc for averageProductPrice
+  return a.sortingValues.averageProductPrice - b.sortingValues.averageProductPrice;
 });
 compareSortRestaurants.set(7, (a, b) => {
-  return b.sortingValues.deliveryCosts - a.sortingValues.deliveryCosts;
+  // asc for deliveryCosts
+  return a.sortingValues.deliveryCosts - b.sortingValues.deliveryCosts;
 });
 compareSortRestaurants.set(8, (a, b) => {
-  return b.sortingValues.minCost - a.sortingValues.minCost;
+  // asc for minCost
+  return a.sortingValues.minCost - b.sortingValues.minCost;
 });
 compareSortRestaurants.set(9, (a, b) => {
+  // asc for topRestaurants
   return a.sortingValues.topRestaurants - b.sortingValues.topRestaurants;
 });
 
