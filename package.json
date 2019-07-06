@@ -2,7 +2,13 @@
   "name": "react-restaurants",
   "version": "1.0.17",
   "description": "List of restaurants with sorting and searching using React JS",
-  "keywords": ["react", "list", "demo", "sample", "restaurant"],
+  "keywords": [
+    "react",
+    "list",
+    "demo",
+    "sample",
+    "restaurant"
+  ],
   "author": "Anton Karpenko <i@karpolan.com> (https://karpolan.com)",
   "license": "MIT",
   "homepage": "https://karpolan.com/demos/react-restaurants",
@@ -11,8 +17,8 @@
     "url": "https://github.com/karpolan/react-restaurants"
   },
   "dependencies": {
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-scripts": "2.1.2"
   },
   "scripts": {
