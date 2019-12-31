@@ -1,13 +1,16 @@
-import React, { Component } from "react";
-import { List, Filter } from "./../components";
-import { getStorage, getFilterdRestaurantsList } from "./../storage";
+import React, { Component } from 'react';
+import { List, Filter } from './../components';
+import { getStorage, getFilteredRestaurantsList } from './../storage';
 
+/**
+ * Renders the List of restaurants
+ */
 export class ListOfRestaurants extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchText: "",
-      sortKind: 0
+      searchText: '',
+      sortKind: 0,
     };
   }
 
@@ -15,30 +18,26 @@ export class ListOfRestaurants extends Component {
     return getStorage().restaurants;
   }
 
-  getFilterdList() {
-    return getFilterdRestaurantsList(
-      this.getList(),
-      this.state.searchText,
-      this.state.sortKind
-    );
+  getFilteredList() {
+    return getFilteredRestaurantsList(this.getList(), this.state.searchText, this.state.sortKind);
   }
 
-  onListItemClick = item => {
-    // Todo: Route to Restaurant Details  
+  onListItemClick = (item) => {
+    // Todo: Route to Restaurant Details
     alert(`Item "${item.name}" id: ${item.id} clicked`);
   };
 
-  onListItemFavoriteChange = item => {
+  onListItemFavoriteChange = (item) => {
     // Todo: Change this to Redux Action or other storage/state solution
     item.isFavorite = !item.isFavorite;
     this.forceUpdate(); // We don't use React setState() so update component manually
   };
 
-  onSearchChange = event => {
+  onSearchChange = (event) => {
     this.setState({ searchText: event.target.value });
   };
 
-  onSortChange = event => {
+  onSortChange = (event) => {
     const value = Number(event.target.value);
     this.setState({ sortKind: value });
   };
@@ -55,7 +54,7 @@ export class ListOfRestaurants extends Component {
         />
         <List
           isDebug={this.props.isDebug}
-          items={this.getFilterdList()}
+          items={this.getFilteredList()}
           onItemClick={this.onListItemClick}
           onItemFavoriteChange={this.onListItemFavoriteChange}
           sortKind={this.state.sortKind}

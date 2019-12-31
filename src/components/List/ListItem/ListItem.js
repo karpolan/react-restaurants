@@ -1,34 +1,27 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ListObjectProps from "./ObjectProprties";
-import { propertySortRestaurants } from "../../../storage";
-import "./ListItem.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ListObjectProps from './ObjectProperties';
+import { propertySortRestaurants } from '../../../storage';
+import './ListItem.css';
 
-// Renders single "restaurnats list" item for given "props.item".
-// When "props.isDebug" renders additional view with "id", "sortingValues", etc.
-// Event "props.onFavoriteChange" binded to "favorite" checbox.
-// Event "props.onClick" binded to "name" header.
-// All CSS styles are set in "./ListItem.css" file.
-const listItem = props => {
-  const {
-    id,
-    name = "",
-    status = "",
-    sortingValues = {},
-    isFavorite = false
-  } = props.item;
+/**
+ * Renders single "restaurants list" item for given "props.item".
+ * When "props.isDebug" is set, renders additional view with "id", "sortingValues", etc.
+ * Event "props.onFavoriteChange" bind to "favorite" checkbox.
+ * Event "props.onClick" bind to "name" header.
+ * All CSS styles are set in "./ListItem.css" file.
+ */
+const ListItem = (props) => {
+  const { id, name = '', status = '', sortingValues = {}, isFavorite = false } = props.item;
 
   const renderDebug = () => {
     if (!props.isDebug) return null;
 
     return (
       <div className="debug">
-        <p className={props.sortKind < 1 ? "id highlight" : "id" }>id: {id}</p>
+        <p className={props.sortKind < 1 ? 'id highlight' : 'id'}>id: {id}</p>
         <div className="sortingValues">
-          <ListObjectProps
-            object={sortingValues}
-            highlights={[propertySortRestaurants.get(props.sortKind)]}
-          />
+          <ListObjectProps object={sortingValues} highlights={[propertySortRestaurants.get(props.sortKind)]} />
         </div>
       </div>
     );
@@ -42,28 +35,22 @@ const listItem = props => {
         </h3>
         <p className="status">{status}</p>
         <label className="favorite">
-          <input
-            type="checkbox"
-            checked={isFavorite}
-            onChange={() => props.onFavoriteChange(props.item)}
-          />
+          <input type="checkbox" checked={isFavorite} onChange={() => props.onFavoriteChange(props.item)} />
           favorite
         </label>
-        <p className="sort">
-          {sortingValues[propertySortRestaurants.get(props.sortKind)]}
-        </p>
+        <p className="sort">{sortingValues[propertySortRestaurants.get(props.sortKind)]}</p>
       </div>
       {renderDebug()}
     </div>
   );
 };
 
-listItem.propTypes = {
+ListItem.propTypes = {
   item: PropTypes.object.isRequired,
   sortKind: PropTypes.number,
   onClick: PropTypes.func,
   onFavoriteChange: PropTypes.func,
-  isDebug: PropTypes.bool
+  isDebug: PropTypes.bool,
 };
 
-export default listItem;
+export default ListItem;

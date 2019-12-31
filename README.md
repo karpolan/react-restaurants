@@ -1,15 +1,18 @@
 # Restaurants
+
 This is a "homework" aka "test task" for position of Full Stack Web developer.
 
 [On-line Demo](https://karpolan.com/demos/react-restaurants/)
 
 ## Task
+
 The goal of this test is to implement a sample project in Php/Javascript, where you
 visualize a restaurant list. You are able to sort the restaurant list based on its current
-openings state, you can favourite a restaurant and you can select a sort value to further
+openings state, you can favorite a restaurant and you can select a sort value to further
 sort the list. And lastly, you are able to search for restaurants.
 
 # It is built using React
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -38,4 +41,3 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
