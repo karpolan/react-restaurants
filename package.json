@@ -11,7 +11,8 @@
   ],
   "author": "Anton Karpenko <i@karpolan.com> (https://karpolan.com)",
   "license": "MIT",
-  "homepage": "https://karpolan.com/demos/react-restaurants",
+  "_homepage": "https://karpolan.com/demos/react-restaurants",
+  "homepage": ".",
   "repository": {
     "type": "git",
     "url": "https://github.com/karpolan/react-restaurants"
