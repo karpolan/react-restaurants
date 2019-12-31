@@ -3,6 +3,7 @@
 This is a "homework" aka "test task" for position of Full Stack Web developer.
 
 [On-line Demo](https://karpolan.com/demos/react-restaurants/)
+
 [Demo at Netlify](https://react-restaurants.netlify.com/npm)
 
 ## Task
