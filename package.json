@@ -1,6 +1,6 @@
 {
   "name": "react-restaurants",
-  "version": "1.1.19",
+  "version": "1.1.21",
   "description": "List of restaurants with sorting and searching using React JS",
   "keywords": [
     "react",
@@ -18,9 +18,9 @@
     "url": "https://github.com/karpolan/react-restaurants"
   },
   "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "^5.0.1"
+    "react": "latest",
+    "react-dom": "latest",
+    "react-scripts": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
